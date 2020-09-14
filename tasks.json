@@ -1,0 +1,247 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "msbuild",
+            "args": [
+                "/property:GenerateFullPaths=true",
+                "/t:build",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Python-base",
+            "type": "shell",
+            "command": "D:\\Anaconda\\python.exe",
+            "args": [
+                "-u ${file}"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "make",
+            "options": {
+                "cwd": "${workspaceRoot}/armgcc"
+            },
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            },
+            "args": [],
+            "linux": {
+                "command": "make"
+            },
+            "osx": {
+                "command": "make"
+            },
+            "windows": {
+                "command": "make.exe"
+            }
+        },
+        {
+            "type":"shell",
+            "label": "C++: clang++.exe build active file",
+            "command": "clang++",
+            "args": [
+                "${file}",
+                //"-S",
+				"-o",
+				"${fileDirname}\\${fileBasenameNoExtension}.exe",
+				"-Wall",
+				"-g",
+				"-Og",
+				"-static-libgcc",
+				"-fcolor-diagnostics",
+				"-fdiagnostics-format=msvc",
+				"-fdiagnostics-print-source-range-info",
+				"-fdiagnostics-parseable-fixits",
+				"-fdiagnostics-show-template-tree",
+				"--target=x86_64-w64-mingw",
+				"-std=c++20"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher":[
+                "$msCompile",
+                {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "/"
+                ],
+                "pattern": {
+                    "regexp": "^(.*.cpp)\\((\\d+),(\\d+)\\):(\\{\\d+:\\d+\\-\\d+:\\d+\\}:)?\\s+(warning|error):\\s+(.*)\\[([^\\[\\]]*)\\]$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    //"location": 4,
+                    "endColumn": 4,
+                    "severity": 5,
+                    "message": 6,
+                    "code": 7,
+                }
+            }
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "gfortran build",
+            "command": "gfortran",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            ],
+            "problemMatcher": [
+                "$msCompile"
+            ]
+        },
+        {
+			"type": "shell",
+			"label": "C/C++: cl build active file",
+			"command": "cl",
+			"args": [
+                "/Zi",
+                "/std:c++latest",
+				"/EHsc",
+				//"/T:",
+				"/MD",
+                //"/RTCs",
+				"/Fe:",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "/Fo:",
+                "${fileDirname}\\${fileBasenameNoExtension}.obj",
+				"/Wall",
+                "/O2",
+                "/favor:blend",
+                "/diagnostics:column",
+                "${file}",
+                "/link"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+                "$msCompile"
+			],
+			"group": "build"
+		},
+		{
+			"type": "shell",
+			"label": "C: clang.exe build active file",
+			"command": "clang",
+			"args": [
+				"${file}",
+				"-o",
+				"${fileDirname}\\${fileBasenameNoExtension}.exe",
+				"-Wall",
+				"-g",
+				"-Og",
+				"-static-libgcc",
+				"-fcolor-diagnostics",
+				"-fdiagnostics-format=msvc",
+				"-fdiagnostics-print-source-range-info",
+				"-fdiagnostics-parseable-fixits",
+				"-fdiagnostics-show-template-tree",
+				"--target=x86_64-w64-mingw",
+				"-std=c17"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+                "$msCompile",
+                {
+                    "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "/"
+                ],
+                "pattern": {
+                    "regexp": "^(.*)\\((\\d+),(\\d+)\\):\\s+(warning|error):\\s+(.*)\\[([^\\[\\]]*)\\]$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5,
+                    "code": 6
+                }
+                }
+			],
+			"group": "build"
+		},
+		{
+			"type": "shell",
+			"label": "run active file",
+			"command": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+			"problemMatcher": [
+				"$msCompile"
+			]
+        },
+        {
+        "label": "echo current EnVs",
+        "type": "shell",
+        "command": "echo",
+        "args": [
+            "'",
+            "workspaceFolder",
+            "${workspaceFolder}\n",
+            "workspaceFolderBasename",
+            "${workspaceFolderBasename}\n",
+            "file",
+            "${file}\n",
+            "relativeFile",
+            "${relativeFile}\n",
+            "fileBasename",
+            "${fileBasename}\n",
+            "fileBasenameNoExtension",
+            "${fileBasenameNoExtension}\n",
+            "cwd",
+            "${cwd}\n",
+            "fileDirname",
+            "${fileDirname}\n",
+            "fileExtname",
+            "${fileExtname}\n",
+            "lineNumber",
+            "${lineNumber}\n",
+            "selectedText",
+            "${selectedText}\n",
+            "'"
+        ],
+        }
+    ]
+}

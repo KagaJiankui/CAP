@@ -1,0 +1,73 @@
+{
+    "configurations": [
+        {
+            "name": "MinGW",
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "D:/LLVM/bin/gcc.exe",
+            "includePath": [
+                "${workspaceFolder}"
+            ],
+            "defines": [],
+            "browse": {
+                "path": [
+                    "${workspaceFolder}"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            },
+            "cStandard": "c11",
+            "cppStandard": "c++17"
+        },
+        {
+            "name": "llvm",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.18362.0",
+            "compilerPath": "D:\\Microsoft Visual Studio\\2019\\Professional\\VC\\Tools\\Llvm\\bin\\clang.exe",
+            "cStandard": "c18",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "clang-x64"
+        },
+        {
+            "name": "msvc",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.18362.0",
+            "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/VC/Tools/MSVC/14.27.29110/bin/Hostx64/x64/cl.exe",
+            "cStandard": "c18",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "msvc-x64",
+            "compileCommands": "${workspaceFolder}/C_Cpp/cpp_language_prac/x64/Debug/cpp_language_prac.ClangTidy/compile_commands.json"
+        },
+        {
+            "name": "CMake",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.18362.0",
+            "compilerPath": "D:LLVM\\bin\\clang.exe",
+            "cStandard": "c18",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "clang-x64",
+            "configurationProvider": "vector-of-bool.cmake-tools"
+        }
+    ],
+    "version": 4
+}
